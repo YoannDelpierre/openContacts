@@ -2,11 +2,11 @@ import angular from 'angular';
 import 'angular-ui-router';
 import {APP_NAME} from '../../constants';
 
-import contactsServices from '../services/contacts';
+import contactsService from '../services/contacts';
 
 export default angular.module(`${APP_NAME}.contacts`, [
   'ui.router',
-  contactsServices.name
+  contactsService.name
 ])
 .config(contactsModuleConfig);
 

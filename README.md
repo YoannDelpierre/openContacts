@@ -4,4 +4,4 @@ Use `npm install`
 
 # How to launch it
 
-Use `npm serve`
+Use `npm run serve`

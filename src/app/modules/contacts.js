@@ -14,13 +14,12 @@ export default angular.module(`${APP_NAME}.contacts`, [
  * @ngInject
  */
 function contactsModuleConfig($stateProvider) {
-  $stateProvider.state(`${APP_NAME}.contacts`, {
+  $stateProvider.state('contacts', {
     url: '/contacts',
     resolve: {
       resolvedContacts($log, contactsService) {
-        $log('contacts resolve', contactsService);
         return contactsService.get().then(contacts => {
-          $log('contacts', contacts);
+          $log.log('contacts', contacts);
         });
       }
     }

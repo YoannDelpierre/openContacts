@@ -1,0 +1,16 @@
+.contacts {
+  &__header {
+    padding: 1em;
+    background-color: $grey-darker;
+  }
+
+  &__title {
+    color: $dark;
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  &__search {
+
+  }
+}

@@ -4,7 +4,7 @@ import 'angular-ui-router';
 import {APP_NAME} from './constants';
 
 import routesConfig from './routes';
-import contactsModule from './app/modules/contacts';
+import contactsModule from './app/modules/contacts/module';
 
 import './index.scss';
 

@@ -1,5 +1,6 @@
 .contacts {
   &__header {
+    position: relative;
     padding: 1em;
     background-color: $grey-darker;
   }
@@ -11,6 +12,12 @@
   }
 
   &__search {
-
+    position: absolute;
+    width: 200px;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    background-color: $grey-darkest;
+    border-radius: 5px;
   }
 }

@@ -19,10 +19,14 @@ function contactsModuleConfig($stateProvider) {
     url: '/contacts',
     template: contactsTemplate,
     resolve: {
-      resolvedContacts($log, contactsService) {
-        return contactsService.get().then(contacts => {
-          $log.log('contacts', contacts);
-        });
+      resolvedContactsLocal(contactsService) {
+        return contactsService.getLocal();
+      },
+      resolvedContactsRemote(contactsService) {
+        return contactsService.get().then(contacts => contacts);
+      },
+      resolvedContacts(resolvedContactsLocal, resolvedContactsRemote) {
+        return resolvedContactsLocal.concat(resolvedContactsRemote);
       }
     }
   });

@@ -4,10 +4,14 @@ import {APP_NAME} from '../../../constants';
 
 import contactsService from './service';
 import contactsTemplate from './template.html';
+import contactsController from './controller';
+
+import contactFactory from '../../factory/contact';
 
 export default angular.module(`${APP_NAME}.contacts`, [
   'ui.router',
-  contactsService.name
+  contactsService.name,
+  contactFactory.name
 ])
 .config(contactsModuleConfig);
 
@@ -17,6 +21,8 @@ export default angular.module(`${APP_NAME}.contacts`, [
 function contactsModuleConfig($stateProvider) {
   $stateProvider.state('contacts', {
     url: '/contacts',
+    controller: contactsController,
+    controllerAs: 'contactsCtrl',
     template: contactsTemplate,
     resolve: {
       resolvedContactsLocal(contactsService) {

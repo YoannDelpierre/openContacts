@@ -1,0 +1,23 @@
+contacts-list-item {
+  display: block;
+
+  &.even {
+    background-color: $grey;
+  }
+}
+
+.contacts-list-item {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.contacts-list-item__cell {
+  display: table-cell;
+  padding: 10px;
+  min-width: 33.33%;
+
+  &:last-of-type {
+    text-align: right;
+  }
+}

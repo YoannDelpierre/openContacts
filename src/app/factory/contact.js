@@ -8,8 +8,12 @@ function ContactFactory() {
   class Contact {
     constructor(data) {
       Object.assign(this, data || {});
+
+      const {name: {first, last}} = this;
+      this.formattedName = [first, last].join(' ');
     }
   }
+
   return Contact;
 }
 

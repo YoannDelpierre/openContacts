@@ -1,1 +1,5 @@
-<contacts-list-item></contacts-list-item>
+<contacts-list-item
+  contact="contact"
+  ng-class="::{'even': $even}"
+  ng-repeat="contact in contactsListCtrl.contacts">
+</contacts-list-item>

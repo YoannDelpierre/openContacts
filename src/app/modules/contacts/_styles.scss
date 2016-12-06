@@ -1,20 +1,19 @@
 .contacts {
   &__header {
     position: relative;
-    background-color: $grey-darker;
+    background-color: $dark;
   }
 
   &__title {
     margin: 0;
     padding: 10px;
-    color: $dark;
+    color: white;
     font-size: 1.2em;
     text-align: center;
   }
 
   &__search {
     height: 50px;
-    background-color: $grey-darkest;
-    border-radius: 5px;
+    background-color: $grey-darker;
   }
 }

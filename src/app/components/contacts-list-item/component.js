@@ -23,4 +23,8 @@ function contactsListItemController() {
     email,
     phone
   });
+
+  ctrl.open = function () {
+    // open a panel
+  };
 }

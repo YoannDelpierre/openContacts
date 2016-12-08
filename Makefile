@@ -7,5 +7,5 @@ run: # run dev environment
 test: # run test
 	npm run test
 
-package: # create package
+build: # create package
 	npm run build

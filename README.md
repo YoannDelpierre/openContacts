@@ -2,13 +2,13 @@
 
 Run `make install`
 
-# How to launch it
+# How to run it
 
-Run `make start`
+Run `make run`
 
 # How to build it
 
-Run `make package`
+Run `make build`
 
 # How to test it
 

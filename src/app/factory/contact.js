@@ -9,8 +9,14 @@ function ContactFactory() {
     constructor(data) {
       Object.assign(this, data || {});
 
-      const {name: {first, last}} = this;
-      this.formattedName = [first, last].join(' ');
+      const {name: {first, last}, email, phone} = this;
+      const formattedName = [first, last].join(' ');
+
+      this.resume = Object.assign({}, {
+        formattedName,
+        email,
+        phone
+      });
     }
   }
 

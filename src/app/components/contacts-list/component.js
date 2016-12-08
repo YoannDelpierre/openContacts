@@ -14,5 +14,9 @@ export default angular.module(`${APP_NAME}.component.list`, [])
   });
 
 function contactsListController() {
-
+  this.$onChanges = function (changes) {
+    if (changes.contacts) {
+      this.contacts = Object.assign({}, changes.contacts.currentValue);
+    }
+  };
 }

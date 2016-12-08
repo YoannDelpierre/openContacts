@@ -4,8 +4,19 @@
       OpenContacts
     </h1>
 
-    <div class="contacts__search"></div>
+    <div class="contacts__search">
+      <input
+        type="text"
+        placeholder="Search"
+        class="contacts__input"
+        ng-model="contactsCtrl.filter"
+        ng-change="contactsCtrl.filterContacts()"
+        ng-model-options="{ updateOn: 'default blur', debounce: {'default': 250, 'blur': 0} }">
+    </div>
   </div>
 
-  <contacts-list contacts="contactsCtrl.contacts"></contacts-list>
+  <contacts-list
+    contacts="contactsCtrl.contacts"
+    class="contact-list">
+  </contacts-list>
 </div>

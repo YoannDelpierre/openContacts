@@ -16,4 +16,10 @@
     height: 50px;
     background-color: $grey-darker;
   }
+
+  &__input {
+    font-size: 20px;
+    height: 100%;
+    width: 80%;
+  }
 }

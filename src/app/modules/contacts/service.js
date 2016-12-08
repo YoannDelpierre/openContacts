@@ -1,6 +1,6 @@
 import angular from 'angular';
 import localForage from 'localforage';
-import {filter, values, merge} from 'lodash/fp';
+import {values, merge} from 'lodash/fp';
 import {APP_NAME, API_CONTACTS, API_RESULTS, LOCAL_NAME, ORIGIN} from '../../../constants';
 
 const LOCAL_CONTACTS = `${LOCAL_NAME}-contacts`;
@@ -9,7 +9,7 @@ export default angular
     .module(`${APP_NAME}.contacts.service`, [])
     .service('contactsService', contactsService);
 
-function contactsService($log, $http, Contact) {
+function contactsService($log, $filter, $http, Contact) {
   function toContact(contact) {
     return new Contact(contact);
   }
@@ -35,17 +35,15 @@ function contactsService($log, $http, Contact) {
         });
     },
 
-    filter() {
-      return filter();
+    filter(value) {
+      if (value.length > 2) {
+        return $filter('filter')(this.contacts, value);
+      }
     },
 
     merge() {
       this.contacts = values(merge(...arguments));
       return this.contacts;
-    },
-
-    reset() {
-      this.contacts = [];
     },
 
     save() {}

@@ -1,7 +1,9 @@
 @import
+  'app/styles/vars',
   'app/styles/colors',
   'app/styles/reset';
 
 @import
   'app/modules/contacts/styles',
+  'app/components/contacts-list/styles',
   'app/components/contacts-list-item/styles';

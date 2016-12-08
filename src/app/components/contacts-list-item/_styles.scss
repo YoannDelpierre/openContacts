@@ -1,4 +1,4 @@
-contacts-list-item {
+.contacts-list-item {
   display: block;
 
   &.even {
@@ -6,7 +6,7 @@ contacts-list-item {
   }
 }
 
-.contacts-list-item {
+.contacts-list-item__table {
   display: table;
   table-layout: fixed;
   width: 100%;
@@ -19,5 +19,15 @@ contacts-list-item {
 
   &:last-of-type {
     text-align: right;
+  }
+}
+
+@media screen and (max-width: $small-devices) {
+  .contacts-list-item__cell {
+    display: block;
+
+    &:last-of-type {
+      text-align: left;
+    }
   }
 }

@@ -16,13 +16,12 @@ export default angular.module(`${APP_NAME}.component.list.item`, [])
 // @ngInject
 function contactsListItemController() {
   const ctrl = this;
-  const {formattedName, email, phone} = ctrl.contact;
 
-  ctrl.resume = Object.assign({}, {
-    formattedName,
-    email,
-    phone
-  });
+  this.$onChanges = function (changes) {
+    if (changes.contact) {
+      this.contact = Object.assign({}, changes.contact.currentValue);
+    }
+  };
 
   ctrl.open = function () {
     // open a panel

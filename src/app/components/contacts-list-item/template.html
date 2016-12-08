@@ -1,15 +1,15 @@
-<div class="contacts-list-item" ng-click="contactsListItemCtrl.open()">
+<div class="contacts-list-item__table" ng-click="contactsListItemCtrl.open()">
   <div class="contacts-list-item__cell">
-    {{::contactsListItemCtrl.resume.formattedName}}
+    {{::contactsListItemCtrl.contact.resume.formattedName}}
   </div>
   <div class="contacts-list-item__cell">
-    <a href="mailto:{{::contactsListItemCtrl.resume.email}}">
-      {{::contactsListItemCtrl.resume.email}}
+    <a href="mailto:{{::contactsListItemCtrl.contact.resume.email}}">
+      {{::contactsListItemCtrl.contact.resume.email}}
     </a>
   </div>
   <div class="contacts-list-item__cell">
-    <a href="tel:{{::contactsListItemCtrl.resume.phone}}">
-      {{::contactsListItemCtrl.resume.phone}}
+    <a href="tel:{{::contactsListItemCtrl.contact.resume.phone}}">
+      {{::contactsListItemCtrl.contact.resume.phone}}
     </a>
   </div>
 </div>

@@ -21,11 +21,9 @@ export default angular.module(`${APP_NAME}.contacts`, [
 function contactsModuleConfig($stateProvider) {
   $stateProvider.state('contacts', {
     url: '/contacts',
-    controller: contactsController,
-    controllerAs: 'contactsCtrl',
-    template: contactsTemplate,
+    abstract: true,
     resolve: {
-      resolvedContactsLocal(contactsService) {
+      resolvedContactsLocal($log, contactsService) {
         return contactsService.getLocal();
       },
       resolvedContactsRemote(contactsService) {
@@ -33,6 +31,22 @@ function contactsModuleConfig($stateProvider) {
       },
       resolvedContacts(contactsService, resolvedContactsLocal, resolvedContactsRemote) {
         return contactsService.merge(resolvedContactsLocal, resolvedContactsRemote);
+      }
+    }
+  });
+
+  $stateProvider.state('contacts.list', {
+    url: '',
+    views: {
+      '@': {
+        controller: contactsController,
+        controllerAs: 'contactsCtrl',
+        template: contactsTemplate
+      }
+    },
+    resolve: {
+      contacts(contactsService) {
+        return contactsService.contacts;
       }
     }
   });

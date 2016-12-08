@@ -1,1 +1,12 @@
-.contact-list {}
+.contact-list {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: $small-devices) and (max-width: $medium-devices) {
+  .contact-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+

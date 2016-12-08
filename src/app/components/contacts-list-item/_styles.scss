@@ -22,7 +22,25 @@
   }
 }
 
-@media screen and (max-width: $small-devices) {
+@media screen and (min-width: $small-devices) and (max-width: $medium-devices) {
+  .contacts-list-item {
+    flex: 1 0 50%;
+
+    &:nth-child(4n+1) {
+      background: tomato;
+    }
+
+    &:nth-child(4n+2) {
+      background: yellow;
+    }
+  }
+
+  .contacts-list-item__cell {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: $medium-devices) {
   .contacts-list-item__cell {
     display: block;
 

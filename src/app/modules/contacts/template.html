@@ -12,6 +12,11 @@
         ng-model="contactsCtrl.filter"
         ng-change="contactsCtrl.filterContacts()"
         ng-model-options="{ updateOn: 'default blur', debounce: {'default': 250, 'blur': 0} }">
+
+        <button
+          ng-click"contactsCtrl.create()">
+          Create
+        </button>
     </div>
   </div>
 

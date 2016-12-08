@@ -1,22 +1,20 @@
 import angular from 'angular';
 import {APP_NAME} from '../../constants';
 
-/**
- * @ngInject
- */
 function ContactFactory() {
   class Contact {
     constructor(data) {
-      Object.assign(this, data || {});
-
-      const {name: {first, last}, email, phone} = this;
+      const {name: {first, last}, email, phone, location} = data;
       const formattedName = [first, last].join(' ');
-
-      this.resume = Object.assign({}, {
+      const address = Object.keys(location).map(key => location[key]).join(' ');
+      const resume = Object.assign({}, {
         formattedName,
         email,
-        phone
+        phone,
+        address
       });
+
+      Object.assign(this, resume);
     }
   }
 

@@ -1,8 +1,17 @@
 export default class ContactsController {
-  constructor(contacts, contactsService) {
+  constructor($log, contacts, contactsService) {
+    this.$log = $log;
+
     this.contactsService = contactsService;
     this.contacts = contacts;
+
+    this.contact = {};
     this.filter = null;
+  }
+
+  createContact() {
+    const contact = this.contact;
+    this.contactsService.save(contact);
   }
 
   filterContacts() {

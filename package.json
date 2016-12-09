@@ -47,7 +47,6 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-phantomjs-shim": "^1.1.2",
     "karma-webpack": "^1.7.0",
-    "localforage": "^1.4.3",
     "lodash": "^4.17.2",
     "ng-annotate-loader": "^0.0.10",
     "node-sass": "^3.4.2",

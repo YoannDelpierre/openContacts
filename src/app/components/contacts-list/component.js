@@ -13,10 +13,11 @@ export default angular.module(`${APP_NAME}.component.list`, [])
     }
   });
 
-function contactsListController() {
+function contactsListController($log) {
   this.$onChanges = function (changes) {
     if (changes.contacts) {
-      this.contacts = Object.assign({}, changes.contacts.currentValue);
+      $log.log(changes);
+      this.contacts = Object.assign(changes.contacts.currentValue);
     }
   };
 }

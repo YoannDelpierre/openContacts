@@ -1,6 +1,5 @@
 import angular from 'angular';
-import localForage from 'localforage';
-import {values, merge} from 'lodash/fp';
+import {values, concat} from 'lodash/fp';
 import {APP_NAME, API_CONTACTS, API_RESULTS, LOCAL_NAME, ORIGIN} from '../../../constants';
 
 const LOCAL_CONTACTS = `${LOCAL_NAME}-contacts`;
@@ -25,27 +24,33 @@ function contactsService($log, $filter, $http, Contact) {
     },
 
     getLocal() {
-      return localForage.getItem(LOCAL_CONTACTS)
-        .then(contacts => {
-          if (contacts) {
-            contacts.map(contact => toContact(contact, {origin: ORIGIN.LOCAL}));
-          } else {
-            return [];
-          }
-        });
+
     },
 
     filter(value) {
-      if (value.length > 2) {
+      if (value.length > 1) {
         return $filter('filter')(this.contacts, value);
       }
     },
 
     merge() {
-      this.contacts = values(merge(...arguments));
+      this.contacts = values(concat(...arguments));
       return this.contacts;
     },
 
-    save() {}
+    add() {
+
+    },
+
+    save(data) {
+      const contact = Object.assign(data, {
+        name: {
+          first: 'Yoann',
+          last: 'Delpierre'
+        },
+        phone: '+33686106094',
+        email: 'yoann.delpierre@gmail.com'
+      });
+    }
   };
 }

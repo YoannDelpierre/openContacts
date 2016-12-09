@@ -6,7 +6,7 @@ function ContactFactory() {
     constructor(data) {
       const {name: {first, last}, email, phone, location} = data;
       const formattedName = [first, last].join(' ');
-      const address = Object.keys(location).map(key => location[key]).join(' ');
+      const address = location ? Object.keys(location).map(key => location[key]).join(' ') : null;
       const resume = Object.assign({}, {
         formattedName,
         email,

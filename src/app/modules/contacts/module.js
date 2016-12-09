@@ -29,7 +29,8 @@ function contactsModuleConfig($stateProvider) {
       resolvedContactsRemote(contactsService) {
         return contactsService.get().then(contacts => contacts);
       },
-      resolvedContacts(contactsService, resolvedContactsLocal, resolvedContactsRemote) {
+      resolvedContacts($log, contactsService, resolvedContactsLocal, resolvedContactsRemote) {
+        $log.log('resolvedContactsLocal', resolvedContactsLocal);
         return contactsService.merge(resolvedContactsLocal, resolvedContactsRemote);
       }
     }

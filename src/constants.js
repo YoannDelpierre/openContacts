@@ -8,3 +8,12 @@ export const ORIGIN = {
   REMOTE: 'remote',
   LOCAL: 'local'
 };
+
+export const DEFAULT_CONTACT_OBJECT = {
+  name: {
+    first: null,
+    last: null
+  },
+  phone: null,
+  email: null
+};

@@ -7,11 +7,16 @@ export default class ContactsController {
 
     this.contact = {};
     this.filter = null;
+
+    this.showCreate = false;
   }
 
   createContact() {
     const contact = this.contact;
-    this.contactsService.save(contact);
+    if (this.addContact.$valid) {
+      this.contactsService.add(contact);
+      this.contact = {};
+    }
   }
 
   filterContacts() {

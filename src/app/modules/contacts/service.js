@@ -1,6 +1,7 @@
 import angular from 'angular';
+import lockr from 'lockr';
 import {values, concat} from 'lodash/fp';
-import {APP_NAME, API_CONTACTS, API_RESULTS, LOCAL_NAME, ORIGIN} from '../../../constants';
+import {APP_NAME, API_CONTACTS, API_RESULTS, LOCAL_NAME, ORIGIN, DEFAULT_CONTACT_OBJECT} from '../../../constants';
 
 const LOCAL_CONTACTS = `${LOCAL_NAME}-contacts`;
 
@@ -24,7 +25,13 @@ function contactsService($log, $filter, $http, Contact) {
     },
 
     getLocal() {
+      const contacts = this.retrieveLocal();
+      return contacts.map(contact => toContact(contact));
+    },
 
+    retrieveLocal() {
+      const contacts = lockr.get(LOCAL_CONTACTS) || [];
+      return contacts;
     },
 
     filter(value) {
@@ -38,19 +45,21 @@ function contactsService($log, $filter, $http, Contact) {
       return this.contacts;
     },
 
-    add() {
+    add(data) {
+      const contact = Object.assign(DEFAULT_CONTACT_OBJECT, data);
+      $log.log('contact add', contact);
 
+      // add to contacts from localStorage
+      this.save(contact);
+
+      // add to current collection
+      this.contacts.unshift(toContact(contact));
     },
 
-    save(data) {
-      const contact = Object.assign(data, {
-        name: {
-          first: 'Yoann',
-          last: 'Delpierre'
-        },
-        phone: '+33686106094',
-        email: 'yoann.delpierre@gmail.com'
-      });
+    save(contact) {
+      const contacts = this.retrieveLocal();
+      contacts.unshift(contact);
+      lockr.set(LOCAL_CONTACTS, contacts);
     }
   };
 }

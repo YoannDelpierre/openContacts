@@ -12,13 +12,45 @@
         ng-model="contactsCtrl.filter"
         ng-change="contactsCtrl.filterContacts()"
         ng-model-options="{ updateOn: 'default blur', debounce: {'default': 250, 'blur': 0} }">
-
-        <button
-          class="contacts__create"
-          ng-click="contactsCtrl.createContact()">
-          Create
-        </button>
     </div>
+  </div>
+
+  <button
+    class="contacts__button"
+    ng-click="contactsCtrl.showCreate =! contactsCtrl.showCreate">
+    Create a new contact
+  </button>
+
+  <form
+    class="contacts__form"
+    name="contactsCtrl.addContact"
+    ng-show="contactsCtrl.showCreate">
+    <div>
+      <label>First</label>
+      <input type="text" ng-model="contactsCtrl.contact.name.first">
+    </div>
+    <div>
+      <label>Last</label>
+      <input type="text" ng-model="contactsCtrl.contact.name.last">
+    </div>
+    <div>
+      <label>Phone</label>
+      <input type="text" ng-model="contactsCtrl.contact.phone">
+    </div>
+    <div>
+      <label>Email</label>
+      <input
+        type="email"
+        ng-model="contactsCtrl.contact.email"
+        ng-required=true>
+    </div>
+  </form>
+
+  <div class="contacts__validate">
+    <button
+    class="contacts__button"
+    ng-show="contactsCtrl.showCreate"
+    ng-click="contactsCtrl.createContact()">Validate</button>
   </div>
 
   <contacts-list
